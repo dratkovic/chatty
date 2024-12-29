@@ -59,6 +59,7 @@ public class User: AggregateRoot
        
         group.Participants.Remove(this);
         AddDomainEvent(new UserLeftGroupEvent(this, group));
+        // some comment
         return new Success();
     }
     
