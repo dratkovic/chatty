@@ -29,7 +29,8 @@ public class User: AggregateRoot
     
     public ErrorOr<Group> CreateGroup(string name, bool isPublic = false)
     {
-        var group = new Group(this, name, isPublic);
+        var groupName = string.IsNullOrEmpty(name) ? "New Group" : name;
+        var group = new Group(this, groupName, isPublic);
         Groups.Add(group);
         AddDomainEvent(new GroupCreatedEvent(group));
         return group;
@@ -53,7 +54,7 @@ public class User: AggregateRoot
         
         if(group.Admins.Contains(this) && group.Admins.Count == 1)
         {
-            return Error.Validation("Admins cannot leave the group");
+            return Error.Validation("Cannot leave group as the only admin");
         }
        
         group.Participants.Remove(this);
@@ -63,15 +64,7 @@ public class User: AggregateRoot
     
     public ErrorOr<Message> SendMessage(string content, Guid? groupId, Guid? recipientId)
     {
-        if(groupId == null && recipientId == null)
-        {
-            return Error.Validation("Message must have a recipient or a group");
-        }
-        if(groupId != null && recipientId != null)
-        {
-            return Error.Validation("Message cannot have both a recipient and a group");
-        }
-        if(groupId != null && !Groups.Any(g => g.Id == groupId))
+        if(groupId != null && Groups.All(g => g.Id != groupId))
         {
             return Error.Validation("User is not a member of the group");
         }

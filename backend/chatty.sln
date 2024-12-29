@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatty.Domain", "source\Cha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatty.Application", "source\Chatty.Application\Chatty.Application.csproj", "{AC6D398F-4372-438E-B65E-01A038BF477A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0D635517-6600-4752-ADA0-F9D8F007762D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatty.Tests.Unit.Domain", "tests\Chatty.Tests.Unit.Domain\Chatty.Tests.Unit.Domain.csproj", "{EB0B6ED9-4DEA-4BAA-8899-AF34FE6988B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,12 @@ Global
 		{AC6D398F-4372-438E-B65E-01A038BF477A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6D398F-4372-438E-B65E-01A038BF477A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6D398F-4372-438E-B65E-01A038BF477A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB0B6ED9-4DEA-4BAA-8899-AF34FE6988B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB0B6ED9-4DEA-4BAA-8899-AF34FE6988B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB0B6ED9-4DEA-4BAA-8899-AF34FE6988B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB0B6ED9-4DEA-4BAA-8899-AF34FE6988B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB0B6ED9-4DEA-4BAA-8899-AF34FE6988B4} = {0D635517-6600-4752-ADA0-F9D8F007762D}
 	EndGlobalSection
 EndGlobal

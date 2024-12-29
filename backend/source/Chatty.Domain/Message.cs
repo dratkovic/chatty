@@ -21,17 +21,21 @@ public class Message : EntityBase
         TimeStamp = DateTime.UtcNow;
     }
     
-    internal static ErrorOr<Message> Create(Guid senderId, string content, Guid? roomId, Guid? recipientId)
+    internal static ErrorOr<Message> Create(Guid senderId, string content, Guid? groupId, Guid? recipientId)
     {
         if (string.IsNullOrWhiteSpace(content))
         {
             return Error.Validation("Message content cannot be empty");
         }
-        if(recipientId == null && roomId == null)
+        if(recipientId == null && groupId == null)
         {
             return Error.Validation("Message must have a recipient or a group");
         }
-        return new Message(senderId, content, roomId, recipientId);
+        if(groupId != null && recipientId != null)
+        {
+            return Error.Validation("Message cannot have both a recipient and a group");
+        }
+        return new Message(senderId, content, groupId, recipientId);
     }
 
 }
