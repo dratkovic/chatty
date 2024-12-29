@@ -27,6 +27,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore backend/chatty.sln
     - name: Build
-      run: dotnet build --no-restore --configuration Release backend/chatty.sln
+      run: dotnet build --no-restore backend/chatty.sln
     - name: Test
       run: dotnet test --no-build --verbosity normal backend/chatty.sln
