@@ -81,6 +81,6 @@ public class MessageTests
         Assert.Equal(groupId, message.GroupId);
         Assert.Equal(recipientId, message.RecipientId);
         Assert.Equal(user.Id, message.SenderId);
-        Assert.InRange(message.TimeStamp, beforeTimestamp, afterTimestamp.AddMilliseconds(200));
+        Assert.InRange(message.TimeStampUtc, beforeTimestamp, afterTimestamp.AddMilliseconds(200));
     }
 }
