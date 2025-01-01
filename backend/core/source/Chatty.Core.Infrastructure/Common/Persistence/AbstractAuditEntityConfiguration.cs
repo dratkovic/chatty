@@ -1,10 +1,10 @@
-﻿using Chatty.Domain.Common;
+using Chatty.Core.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Chatty.Infrastructure.Common.Persistence;
+namespace Chatty.Core.Infrastructure.Common.Persistence;
 
-public abstract class AbstractEntityConfiguration<T> : IEntityTypeConfiguration<T> where T : EntityBase
+public abstract class AbstractAuditEntityConfiguration<T> : IEntityTypeConfiguration<T> where T : EntityBase
 {
     public virtual void Configure(EntityTypeBuilder<T> builder)
     {
@@ -15,4 +15,3 @@ public abstract class AbstractEntityConfiguration<T> : IEntityTypeConfiguration<
 
     protected abstract void ConfigureEntity(EntityTypeBuilder<T> builder);
 }
-

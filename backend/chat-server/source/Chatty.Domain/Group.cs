@@ -1,4 +1,4 @@
-﻿using Chatty.Domain.Common;
+﻿using Chatty.Core.Domain.Models;
 
 namespace Chatty.Domain;
 

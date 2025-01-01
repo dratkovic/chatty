@@ -19,9 +19,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\core\source\Chatty.Core.Infrastructure\Chatty.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\Chatty.Application\Chatty.Application.csproj" />
     <ProjectReference Include="..\Chatty.Contracts\Chatty.Contracts.csproj" />
     <ProjectReference Include="..\Chatty.Domain\Chatty.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Persistance\" />
   </ItemGroup>
 
 </Project>

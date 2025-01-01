@@ -7,7 +7,7 @@ public class AuditEntityBase: EntityBase
     public string? ModifiedBy { get; set; }
     public DateTime? ModifiedAt { get; set; }
 
-    protected AuditEntityBase(Guid id): base(id)
+    protected AuditEntityBase(Guid? id): base(id)
     {
     }
 

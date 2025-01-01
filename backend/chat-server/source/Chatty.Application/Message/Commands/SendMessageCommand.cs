@@ -1,12 +1,12 @@
-﻿using Chatty.Application.Common.Authorization;
-using Chatty.Contracts.Requests;
+﻿using Chatty.Contracts.Requests;
 using Chatty.Contracts.Responses;
+using Chatty.Core.Application.Common.Authorization;
 using ErrorOr;
 using MediatR;
 
 namespace Chatty.Application.Message.Commands;
 
-[Authorize]
+[DAuthorize]
 public sealed record SendMessageCommand(SendMessageRequest Request) 
     : IRequest<ErrorOr<MessageStatusResponse>>
 { }

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\core\source\Chatty.Core.Application\Chatty.Core.Application.csproj" />
     <ProjectReference Include="..\Chatty.Contracts\Chatty.Contracts.csproj" />
     <ProjectReference Include="..\Chatty.Domain\Chatty.Domain.csproj" />
   </ItemGroup>

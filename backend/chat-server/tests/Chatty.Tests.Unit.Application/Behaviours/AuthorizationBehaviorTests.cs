@@ -1,7 +1,4 @@
-﻿using Chatty.Application.Behaviors;
-using Chatty.Application.Common.Authorization;
-using Chatty.Application.Common.Interfaces;
-using Chatty.Application.Common.Models;
+﻿
 using ErrorOr;
 using MediatR;
 using NSubstitute;

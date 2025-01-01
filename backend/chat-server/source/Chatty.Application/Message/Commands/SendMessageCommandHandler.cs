@@ -1,7 +1,6 @@
 ﻿using Chatty.Application.Common.Helpers;
-using Chatty.Application.Common.Interfaces;
-using Chatty.Application.Common.Repositories;
 using Chatty.Contracts.Responses;
+using Chatty.Core.Application.Common.Persistance;
 using MediatR;
 using ErrorOr;
 using Microsoft.Extensions.Logging;
@@ -11,10 +10,10 @@ namespace Chatty.Application.Message.Commands;
 internal class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, ErrorOr<MessageStatusResponse>>
 {
     private readonly IUserRetriever _userSession;
-    private readonly IChattyDbContext _dbContext;
+    private readonly IAppDbContext _dbContext;
     private readonly ILogger<SendMessageCommandHandler> _logger;
 
-    public SendMessageCommandHandler(IUserRetriever userSession, IChattyDbContext dbContext, ILogger<SendMessageCommandHandler> logger)
+    public SendMessageCommandHandler(IUserRetriever userSession, IAppDbContext dbContext, ILogger<SendMessageCommandHandler> logger)
     {
         _userSession = userSession;
         _dbContext = dbContext;

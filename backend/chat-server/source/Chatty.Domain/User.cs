@@ -1,5 +1,5 @@
 ﻿using System.Net.Mail;
-using Chatty.Domain.Common;
+using Chatty.Core.Domain.Models;
 using Chatty.Domain.Events;
 using ErrorOr;
 

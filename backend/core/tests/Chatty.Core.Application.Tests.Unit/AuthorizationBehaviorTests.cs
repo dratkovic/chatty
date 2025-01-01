@@ -79,6 +79,6 @@ public class AuthorizationBehaviorTests
 
     private class TestRequest : IRequest<ErrorOr<string>> { }
 
-    [SAuthorize]
+    [DAuthorize]
     private class AuthorizedTestRequest : TestRequest{ }
 }

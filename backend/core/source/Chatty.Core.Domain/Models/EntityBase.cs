@@ -9,8 +9,8 @@ public abstract class EntityBase
     
     public bool IsDeleted { get; set; }
 
-    protected EntityBase(Guid id)
+    protected EntityBase(Guid? id)
     {
-        Id = id;
+        Id = id ?? Guid.NewGuid();
     }
 }

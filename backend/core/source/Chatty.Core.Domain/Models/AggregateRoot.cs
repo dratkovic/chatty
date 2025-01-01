@@ -4,7 +4,7 @@ public abstract class AggregateRoot: AuditEntityBase
 {
     private readonly List<IDomainEvent> _domainEvents = [];
 
-    protected AggregateRoot(Guid id) : base(id)
+    protected AggregateRoot(Guid? id) : base(id)
     {}
     
     public IList<IDomainEvent> PopDomainEvents()
