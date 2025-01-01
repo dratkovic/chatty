@@ -7,7 +7,7 @@ using System.Security.Claims;
 using Chatty.Core.Application.Common.Models;
 using Chatty.Core.Infrastructure.Authentication.TokenGenerator;
 
-namespace Sensei.Core.Infrastructure.Tests.Unit;
+namespace Chatty.Core.Infrastructure.Tests.Unit;
 
 public class JwtTokenManipulatorTests
 {

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Sensei.Core.Api": {
+    "Chatty.Core.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

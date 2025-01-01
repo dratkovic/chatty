@@ -5,7 +5,7 @@ using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
-namespace Sensei.Core.Infrastructure.Tests.Unit;
+namespace Chatty.Core.Infrastructure.Tests.Unit;
 
 public class PaginatedRepositoryTests
 {

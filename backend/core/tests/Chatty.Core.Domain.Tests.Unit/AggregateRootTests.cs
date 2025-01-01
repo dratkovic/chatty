@@ -4,7 +4,7 @@ using FluentAssertions;
 using NSubstitute;
 using Xunit;
 
-namespace Sensei.Core.Domain.Tests.Unit;
+namespace Chatty.Core.Domain.Tests.Unit;
 
 public class AggregateRootTests
 {

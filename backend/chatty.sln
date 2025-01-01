@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatty.Core.Domain.Tests.Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatty.Core.Infrastructure.Tests.Unit", "core\tests\Chatty.Core.Infrastructure.Tests.Unit\Chatty.Core.Infrastructure.Tests.Unit.csproj", "{703FDE6F-2ACF-4D57-BCDF-4014CC9E125E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatty.Authentication.Api", "auth-server\source\Chatty.Authentication.Api\Chatty.Authentication.Api.csproj", "{FC84E008-0318-49B1-B50E-18DC875D336F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,7 @@ Global
 		{0AC3A9C8-2312-45B4-9A0E-BD88B1AB5D0E} = {D267D1C0-FF63-4DDC-9E42-3BCBF5158630}
 		{99486A98-F60B-41C5-BADA-BFBE0F480166} = {D267D1C0-FF63-4DDC-9E42-3BCBF5158630}
 		{703FDE6F-2ACF-4D57-BCDF-4014CC9E125E} = {D267D1C0-FF63-4DDC-9E42-3BCBF5158630}
+		{FC84E008-0318-49B1-B50E-18DC875D336F} = {385E04E2-697D-4CE9-99FE-D01515800F4B}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9297DB35-B59C-4227-A159-3F6ED461855F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -124,5 +127,9 @@ Global
 		{703FDE6F-2ACF-4D57-BCDF-4014CC9E125E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{703FDE6F-2ACF-4D57-BCDF-4014CC9E125E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{703FDE6F-2ACF-4D57-BCDF-4014CC9E125E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC84E008-0318-49B1-B50E-18DC875D336F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC84E008-0318-49B1-B50E-18DC875D336F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC84E008-0318-49B1-B50E-18DC875D336F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC84E008-0318-49B1-B50E-18DC875D336F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

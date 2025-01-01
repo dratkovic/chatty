@@ -7,7 +7,7 @@ public static class WebApiConfigurator
         // We'll move CORS handling on rproxy side (nginx)
         services.AddCors(options =>
         {
-            options.AddPolicy("SenseiCorsPolicy", builder =>
+            options.AddPolicy("ChattyCorsPolicy", builder =>
                 builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader());
