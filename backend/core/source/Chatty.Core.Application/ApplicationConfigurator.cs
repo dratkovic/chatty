@@ -1,11 +1,10 @@
 ﻿using System.Reflection;
+using Chatty.Core.Application.Behaviors;
+using Chatty.Core.Application.Mapping;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using Sensei.Core.Application.Behaviors;
-using Sensei.Core.Application.Common.Interfaces;
-using Sensei.Core.Application.Mapping;
 
-namespace Sensei.Core.Application;
+namespace Chatty.Core.Application;
 
 public static class ApplicationConfigurator
 {

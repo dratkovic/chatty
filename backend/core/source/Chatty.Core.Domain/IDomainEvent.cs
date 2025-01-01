@@ -1,5 +1,5 @@
 ﻿using MediatR;
 
-namespace Sensei.Core.Domain;
+namespace Chatty.Core.Domain;
 
 public interface IDomainEvent : INotification { }

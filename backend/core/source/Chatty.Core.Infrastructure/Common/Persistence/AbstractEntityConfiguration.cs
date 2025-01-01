@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Chatty.Core.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sensei.Core.Domain.Models;
 
-namespace Sensei.Core.Infrastructure.Common.Persistence;
+namespace Chatty.Core.Infrastructure.Common.Persistence;
 
 public abstract class AbstractEntityConfiguration<T> : IEntityTypeConfiguration<T> where T : AuditEntityBase
 {

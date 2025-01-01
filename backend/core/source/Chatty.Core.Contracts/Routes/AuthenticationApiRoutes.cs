@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Contracts.Routes;
+﻿namespace Chatty.Core.Contracts.Routes;
 
 public static class AuthenticationApiRoutes
 {

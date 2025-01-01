@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
+using Chatty.Core.Domain.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Sensei.Core.Domain.Models;
 
-namespace Sensei.Core.Domain;
+namespace Chatty.Core.Domain;
 
 public static class DomainConfigurator
 {

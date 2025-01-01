@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Application.Common.Pagination;
+﻿namespace Chatty.Core.Application.Common.Pagination;
 
 public class PaginationResult<T> where T : class
 {

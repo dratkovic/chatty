@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 
-namespace Sensei.Core.Infrastructure.Common.Middleware;
+namespace Chatty.Core.Infrastructure.Common.Middleware;
 
 public static class RequestPipeline
 {

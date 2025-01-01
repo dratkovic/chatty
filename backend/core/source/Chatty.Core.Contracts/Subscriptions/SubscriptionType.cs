@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Contracts.Subscriptions;
+﻿namespace Chatty.Core.Contracts.Subscriptions;
 
 public enum SubscriptionType
 {

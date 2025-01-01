@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Chatty.Core.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Sensei.Core.Domain.Models;
 
-namespace Sensei.Core.Application.Common.Persistance;
+namespace Chatty.Core.Application.Common.Persistance;
 
 public interface IAppDbContext
 {

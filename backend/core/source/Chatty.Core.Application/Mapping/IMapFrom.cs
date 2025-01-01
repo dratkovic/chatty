@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Sensei.Core.Application.Mapping;
+namespace Chatty.Core.Application.Mapping;
 
 public interface IMapFrom<T>
 {

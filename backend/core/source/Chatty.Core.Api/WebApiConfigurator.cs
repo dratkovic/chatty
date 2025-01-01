@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Api;
+﻿namespace Chatty.Core.Api;
 
 public static class WebApiConfigurator
 {

@@ -2,7 +2,7 @@ using ErrorOr;
 using FluentValidation;
 using MediatR;
 
-namespace Sensei.Core.Application.Behaviors;
+namespace Chatty.Core.Application.Behaviors;
 
 public class ValidationBehavior<TRequest, TResponse>(IValidator<TRequest>? _validator = null)
     : IPipelineBehavior<TRequest, TResponse>

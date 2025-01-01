@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Sensei.Core.Domain.Models;
+namespace Chatty.Core.Domain.Models;
 
 public abstract class EntityBase
 {

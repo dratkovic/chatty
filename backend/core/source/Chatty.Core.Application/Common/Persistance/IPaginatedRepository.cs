@@ -1,7 +1,7 @@
-﻿using Sensei.Core.Application.Common.Pagination;
-using Sensei.Core.Domain.Models;
+﻿using Chatty.Core.Application.Common.Pagination;
+using Chatty.Core.Domain.Models;
 
-namespace Sensei.Core.Application.Common.Persistance;
+namespace Chatty.Core.Application.Common.Persistance;
 
 public interface IPaginatedRepository<T> where T : EntityBase
 {

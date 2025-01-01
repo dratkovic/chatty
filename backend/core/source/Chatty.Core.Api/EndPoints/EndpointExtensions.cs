@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Sensei.Core.Api.EndPoints;
+namespace Chatty.Core.Api.EndPoints;
 
 public static class EndpointExtensions
 {

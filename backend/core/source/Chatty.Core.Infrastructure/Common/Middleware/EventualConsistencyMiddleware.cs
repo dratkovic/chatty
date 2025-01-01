@@ -1,11 +1,10 @@
+using Chatty.Core.Application.Common.Persistance;
+using Chatty.Core.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Sensei.Core.Application.Common.Persistance;
-using Sensei.Core.Domain;
-using Sensei.Core.Infrastructure.Common.Persistence;
 
-namespace Sensei.Core.Infrastructure.Common.Middleware;
+namespace Chatty.Core.Infrastructure.Common.Middleware;
 
 public class EventualConsistencyMiddleware(RequestDelegate next)
 {

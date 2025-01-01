@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Sensei.Core.Api;
+namespace Chatty.Core.Api;
 
 internal sealed class GlobalExceptionHandler : IExceptionHandler
 {

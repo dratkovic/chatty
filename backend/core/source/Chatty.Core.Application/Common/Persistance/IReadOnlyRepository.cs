@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
-using Sensei.Core.Domain.Models;
+using Chatty.Core.Domain.Models;
 
-namespace Sensei.Core.Application.Common.Persistance;
+namespace Chatty.Core.Application.Common.Persistance;
 
 public interface IReadOnlyRepository<T> where T: EntityBase
 {

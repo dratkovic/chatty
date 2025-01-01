@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Domain.Models;
+﻿namespace Chatty.Core.Domain.Models;
 
 public class AuditEntityBase: EntityBase
 {

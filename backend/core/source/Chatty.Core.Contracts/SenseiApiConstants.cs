@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Contracts;
+﻿namespace Chatty.Core.Contracts;
 
 public static class SenseiApiConstants
 {

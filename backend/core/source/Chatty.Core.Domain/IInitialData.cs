@@ -1,6 +1,6 @@
-﻿using Sensei.Core.Domain.Models;
+﻿using Chatty.Core.Domain.Models;
 
-namespace Sensei.Core.Domain;
+namespace Chatty.Core.Domain;
 
 public interface IInitialData<T> where T: EntityBase
 {

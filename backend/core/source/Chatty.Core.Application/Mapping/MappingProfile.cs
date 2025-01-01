@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using AutoMapper;
 
-namespace Sensei.Core.Application.Mapping;
+namespace Chatty.Core.Application.Mapping;
 
 public class MappingProfile : Profile
 {

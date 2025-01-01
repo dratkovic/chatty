@@ -1,12 +1,12 @@
 using System.Reflection;
+using Chatty.Core.Application.Common.Interfaces;
+using Chatty.Core.Domain;
+using Chatty.Core.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Sensei.Core.Application.Common.Interfaces;
-using Sensei.Core.Domain;
-using Sensei.Core.Domain.Models;
 
-namespace Sensei.Core.Infrastructure.Common.Persistence;
+namespace Chatty.Core.Infrastructure.Common.Persistence;
 
 public class AppDbContext : DbContext
 {

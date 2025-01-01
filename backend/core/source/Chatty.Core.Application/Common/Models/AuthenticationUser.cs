@@ -1,6 +1,6 @@
-using Sensei.Core.Domain.Models;
+using Chatty.Core.Domain.Models;
 
-namespace Sensei.Core.Application.Common.Models;
+namespace Chatty.Core.Application.Common.Models;
 
 public class AuthenticationUser : IAuthenticationUser
 {

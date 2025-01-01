@@ -1,6 +1,6 @@
-﻿using Sensei.Core.Domain.Models;
+﻿using Chatty.Core.Domain.Models;
 
-namespace Sensei.Core.Application.Common.Persistance;
+namespace Chatty.Core.Application.Common.Persistance;
 
 public interface IRepository<T>: IReadOnlyRepository<T> where T: EntityBase
 {

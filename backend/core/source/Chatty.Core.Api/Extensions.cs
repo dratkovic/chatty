@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using ErrorOr;
-namespace Sensei.Core.Api;
+﻿using ErrorOr;
+
+namespace Chatty.Core.Api;
 
 public static class Extensions
 {

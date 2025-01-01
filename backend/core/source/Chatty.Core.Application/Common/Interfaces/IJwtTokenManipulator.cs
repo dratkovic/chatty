@@ -1,8 +1,8 @@
 using System.Security.Claims;
+using Chatty.Core.Domain.Models;
 using ErrorOr;
-using Sensei.Core.Domain.Models;
 
-namespace Sensei.Core.Application.Common.Interfaces;
+namespace Chatty.Core.Application.Common.Interfaces;
 
 public interface IJwtTokenManipulator
 {

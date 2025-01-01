@@ -1,12 +1,12 @@
 using System.Text.RegularExpressions;
-using Sensei.Core.Domain;
+using Chatty.Core.Domain;
 using ErrorOr;
 
-namespace Sensei.Core.Infrastructure.Authentication.PasswordHasher;
+namespace Chatty.Core.Infrastructure.Authentication.PasswordHasher;
 
 public partial class PasswordHasher : IPasswordHasher
 {
-    private static readonly Regex PasswordRegex = StrongPasswordRegex();
+    private static readonly Regex PasswordRegex = HardPasswordRegex();
 
     public ErrorOr<string> HashPassword(string password)
     {
@@ -22,5 +22,5 @@ public partial class PasswordHasher : IPasswordHasher
 
     // https://stackoverflow.com/a/34715674/10091553
     [GeneratedRegex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", RegexOptions.Compiled)]
-    private static partial Regex StrongPasswordRegex();
+    private static partial Regex HardPasswordRegex();
 }

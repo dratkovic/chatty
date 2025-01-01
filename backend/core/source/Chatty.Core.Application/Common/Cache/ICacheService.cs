@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Application.Common.Cache;
+﻿namespace Chatty.Core.Application.Common.Cache;
 
 public interface ICacheService
 {

@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Application.Common.Models;
+﻿namespace Chatty.Core.Application.Common.Models;
 
 public record UserSession(
     UserProfile UserProfile,

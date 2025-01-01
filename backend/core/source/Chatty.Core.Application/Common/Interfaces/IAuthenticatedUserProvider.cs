@@ -1,6 +1,6 @@
-using Sensei.Core.Domain.Models;
+using Chatty.Core.Domain.Models;
 
-namespace Sensei.Core.Application.Common.Interfaces;
+namespace Chatty.Core.Application.Common.Interfaces;
 
 public interface IAuthenticatedUserProvider
 {

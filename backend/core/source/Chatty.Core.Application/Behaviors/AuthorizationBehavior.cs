@@ -1,10 +1,10 @@
 using System.Reflection;
+using Chatty.Core.Application.Common.Authorization;
+using Chatty.Core.Application.Common.Interfaces;
 using ErrorOr;
 using MediatR;
-using Sensei.Core.Application.Common.Authorization;
-using Sensei.Core.Application.Common.Interfaces;
 
-namespace Sensei.Core.Application.Behaviors;
+namespace Chatty.Core.Application.Behaviors;
 
 public class AuthorizationBehavior<TRequest, TResponse>(IAuthenticatedUserProvider authenticatedUserProvider)
     : IPipelineBehavior<TRequest, TResponse>

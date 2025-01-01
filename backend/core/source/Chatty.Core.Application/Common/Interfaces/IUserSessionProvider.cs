@@ -1,6 +1,6 @@
-﻿using Sensei.Core.Application.Common.Models;
+﻿using Chatty.Core.Application.Common.Models;
 
-namespace Sensei.Core.Application.Common.Interfaces;
+namespace Chatty.Core.Application.Common.Interfaces;
 
 public interface IUserSessionProvider
 {

@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Sensei.Core.Application.Common.Pagination;
-using Sensei.Core.Application.Common.Persistance;
-using Sensei.Core.Domain.Models;
+﻿using Chatty.Core.Application.Common.Pagination;
+using Chatty.Core.Application.Common.Persistance;
+using Chatty.Core.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Sensei.Core.Infrastructure.Persistance;
+namespace Chatty.Core.Infrastructure.Persistance;
 
 public class PaginatedRepository<T> : IPaginatedRepository<T> where T : EntityBase
 {

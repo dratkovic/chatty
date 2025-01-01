@@ -1,4 +1,4 @@
-namespace Sensei.Core.Infrastructure.Authentication.TokenGenerator;
+namespace Chatty.Core.Infrastructure.Authentication.TokenGenerator;
 
 public class JwtSettings
 {

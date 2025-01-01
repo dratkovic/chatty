@@ -1,15 +1,14 @@
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using Chatty.Core.Application.Common.Interfaces;
+using Chatty.Core.Domain.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Sensei.Core.Application.Common.Interfaces;
-using Sensei.Core.Domain.Models;
-using ErrorOr;
 using Microsoft.IdentityModel.JsonWebTokens;
+using ErrorOr;
 
-namespace Sensei.Core.Infrastructure.Authentication.TokenGenerator;
+namespace Chatty.Core.Infrastructure.Authentication.TokenGenerator;
 
 public class JwtTokenManipulator : IJwtTokenManipulator
 {

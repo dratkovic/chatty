@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Domain;
+﻿namespace Chatty.Core.Domain;
 using ErrorOr;
 
 public interface IPasswordHasher

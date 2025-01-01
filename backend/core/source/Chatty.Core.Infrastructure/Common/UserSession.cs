@@ -1,11 +1,10 @@
 ﻿using System.Security.Claims;
+using Chatty.Core.Application.Common.Interfaces;
+using Chatty.Core.Application.Common.Models;
+using Chatty.Core.Domain.Models;
 using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.JsonWebTokens;
-using Sensei.Core.Application.Common.Interfaces;
-using Sensei.Core.Application.Common.Models;
-using Sensei.Core.Domain.Models;
 
-namespace Sensei.Core.Infrastructure.Common;
+namespace Chatty.Core.Infrastructure.Common;
 
 public class AuthenticatedUserProvider(IHttpContextAccessor? _httpContextAccessor) : IAuthenticatedUserProvider
 {

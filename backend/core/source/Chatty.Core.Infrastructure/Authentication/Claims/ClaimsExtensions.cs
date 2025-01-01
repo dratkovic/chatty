@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace Sensei.Core.Infrastructure.Authentication.Claims;
+namespace Chatty.Core.Infrastructure.Authentication.Claims;
 
 public static class ClaimsExtensions
 {

@@ -1,18 +1,18 @@
 using System.Text;
+using Chatty.Core.Application.Common.Interfaces;
+using Chatty.Core.Application.Common.Persistance;
+using Chatty.Core.Domain;
+using Chatty.Core.Infrastructure.Authentication.PasswordHasher;
+using Chatty.Core.Infrastructure.Authentication.TokenGenerator;
+using Chatty.Core.Infrastructure.Common;
+using Chatty.Core.Infrastructure.Persistance;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Sensei.Core.Application.Common.Interfaces;
-using Sensei.Core.Application.Common.Persistance;
-using Sensei.Core.Domain;
-using Sensei.Core.Infrastructure.Authentication.PasswordHasher;
-using Sensei.Core.Infrastructure.Authentication.TokenGenerator;
-using Sensei.Core.Infrastructure.Common;
-using Sensei.Core.Infrastructure.Persistance;
 
-namespace Sensei.Core.Infrastructure;
+namespace Chatty.Core.Infrastructure;
 
 public static class InfrastructureConfigurator
 {

@@ -1,4 +1,4 @@
-﻿namespace Sensei.Core.Contracts.Cache;
+﻿namespace Chatty.Core.Contracts.Cache;
 
 public static class CacheKeys
 {
