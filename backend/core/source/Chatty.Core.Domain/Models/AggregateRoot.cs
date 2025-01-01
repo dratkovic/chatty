@@ -4,6 +4,8 @@ public abstract class AggregateRoot: AuditEntityBase
 {
     private readonly List<IDomainEvent> _domainEvents = [];
 
+    protected AggregateRoot() : base()
+    {}
     protected AggregateRoot(Guid? id) : base(id)
     {}
     
