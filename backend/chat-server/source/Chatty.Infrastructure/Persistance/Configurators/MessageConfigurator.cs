@@ -1,6 +1,5 @@
 using Chatty.Core.Infrastructure.Common.Persistence;
 using Chatty.Domain;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Chatty.Infrastructure.Persistance;

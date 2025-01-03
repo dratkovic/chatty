@@ -5,7 +5,7 @@ namespace Chatty.Domain;
 
 public class Message : EntityBase
 {
-    public User Sender { get; private set; }
+    public User Sender { get; private set; } = null!;
     public Guid SenderId { get; private set; }
     public string Content { get; private set; }
     
