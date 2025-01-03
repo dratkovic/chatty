@@ -21,6 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\aspire\Chatty.ServiceDefaults\Chatty.ServiceDefaults.csproj" />
       <ProjectReference Include="..\..\..\core\source\Chatty.Core.Api\Chatty.Core.Api.csproj" />
       <ProjectReference Include="..\..\..\core\source\Chatty.Core.Application\Chatty.Core.Application.csproj" />
       <ProjectReference Include="..\..\..\core\source\Chatty.Core.Contracts\Chatty.Core.Contracts.csproj" />

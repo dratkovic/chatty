@@ -6,6 +6,7 @@ using Chatty.Core.Api.EndPoints;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApiServices(builder.Configuration);
+builder.AddServiceDefaults();
 
 builder.AddNpgsqlDbContext<AuthenticationDbContext>(ApiConstants.DbConnectionStringConfigName);
 
@@ -22,6 +23,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseIEndpoints<IAuthenticationApiMarker>();
+app.MapDefaultEndpoints();
 
 app.Seed(app.Environment.IsDevelopment()).Wait();
 
