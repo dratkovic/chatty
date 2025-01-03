@@ -1,3 +1,4 @@
+using Chatty.Core.Api.EndPoints;
 using Chatty.webApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseIEndpoints<IChattyApiMarker>();
 
 app.Run();
 

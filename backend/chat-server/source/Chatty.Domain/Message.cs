@@ -5,11 +5,14 @@ namespace Chatty.Domain;
 
 public class Message : EntityBase
 {
+    public User Sender { get; private set; }
     public Guid SenderId { get; private set; }
     public string Content { get; private set; }
     
     public DateTime TimeStampUtc { get; private set; }
+    public Group? Group { get; private set; } 
     public Guid? GroupId { get; private set; } // Null for 1:1 chats
+    public User? Recipient { get; private set; }
     public Guid? RecipientId { get; private set; } // Null for group chats
     
     public MessageStatus Status { get; private set; } = MessageStatus.Sent;
@@ -40,7 +43,7 @@ public class Message : EntityBase
         return new Message(senderId, content, groupId, recipientId);
     }
     
-    internal ErrorOr<Success> ChangeStatus(MessageStatus newStatus)
+    public ErrorOr<Success> ChangeStatus(MessageStatus newStatus)
     {
         if (Status >= newStatus)
         {
