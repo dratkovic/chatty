@@ -1,4 +1,5 @@
-﻿using Chatty.Core.Application.Common.Persistance;
+﻿using Chatty.Core.Application.Common.Interfaces;
+using Chatty.Core.Application.Common.Persistance;
 using Chatty.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,22 +8,29 @@ namespace Chatty.Application.Common.Helpers;
 public class UserRetriever : IUserRetriever
 {
     private readonly IAppDbContext _dbContext;
-    private readonly IUserRetriever  _userSession;
+    private readonly IAuthenticatedUserProvider _userProvider;
     private User? _currentUser = null;
     
-    public UserRetriever(IAppDbContext dbContext, IUserRetriever userSession)
+    public UserRetriever(IAppDbContext dbContext, IAuthenticatedUserProvider userProvider)
     {
         _dbContext = dbContext;
-        _userSession = userSession;
+        _userProvider = userProvider;
     }
     
     public async Task<User?> GetCurrentUser(){
-        var currentUser = await _userSession.GetCurrentUser();
-        if (_currentUser != null && _currentUser.Id == currentUser.Id)
+        var currentUser = _userProvider.GetCurrentUser();
+        var validId = Guid.TryParse(currentUser.Id, out var userId);
+        if (currentUser.IsGuest || !validId)
+        {
+            return null;
+        }
+        
+        if (_currentUser != null && _currentUser.Id == userId)
         {
             return _currentUser;
         }
-        _currentUser = await _dbContext.Set<User>().FirstOrDefaultAsync(u => u.Id == currentUser.Id);
+        
+        _currentUser = await _dbContext.Set<User>().FirstOrDefaultAsync(u => u.Id == userId);
         return _currentUser;
     }
 }

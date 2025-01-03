@@ -2,7 +2,7 @@ using Chatty.Core.Domain.Models;
 
 namespace Chatty.Core.Application.Common.Models;
 
-public class AuthenticationUser : IAuthenticationUser
+public class AuthenticatedUser : IAuthenticatedUser
 {
     public string Id { get; }
     public string Email { get; }
@@ -10,7 +10,7 @@ public class AuthenticationUser : IAuthenticationUser
     public string LastName { get; }
     public List<string> Roles { get; }
 
-    public AuthenticationUser(string id, string email, string firstName, string lastName, List<string> roles)
+    public AuthenticatedUser(string id, string email, string firstName, string lastName, List<string> roles)
     {
         Id = id;
         Email = email;
@@ -21,6 +21,6 @@ public class AuthenticationUser : IAuthenticationUser
 
     public bool IsGuest => Id == String.Empty;
 
-    public static AuthenticationUser GuestUser => new(String.Empty, "some@invalid.email", "guest", "guest", []);
+    public static AuthenticatedUser GuestUser => new(String.Empty, "some@invalid.email", "guest", "guest", []);
 
 };

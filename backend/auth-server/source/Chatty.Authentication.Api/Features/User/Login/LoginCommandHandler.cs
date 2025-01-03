@@ -33,7 +33,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, ErrorOr<LoginRe
         
         var userRoles = await _userManager.GetRolesAsync(user!);
 
-        var token = _jwtTokenManipulator.GenerateToken(new AuthenticationUser(user!.Id,
+        var token = _jwtTokenManipulator.GenerateToken(new AuthenticatedUser(user!.Id,
             user.Email!.ToLower(),
             user.FirstName,
             user.LastName,

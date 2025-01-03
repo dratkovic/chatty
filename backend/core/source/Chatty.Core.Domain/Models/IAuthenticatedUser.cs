@@ -1,6 +1,6 @@
 ﻿namespace Chatty.Core.Domain.Models;
 
-public interface IAuthenticationUser
+public interface IAuthenticatedUser
 {
     string Id { get; }
     string Email { get; }

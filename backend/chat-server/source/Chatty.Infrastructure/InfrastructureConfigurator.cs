@@ -37,7 +37,7 @@ public static class InfrastructureConfigurator
 
     public static IHostApplicationBuilder AddRedis(this IHostApplicationBuilder app)
     {
-        //app.AddRedisDistributedCache("sensei-cache");
+        app.AddRedisDistributedCache("chatty-redis");
 
         return app;
     }

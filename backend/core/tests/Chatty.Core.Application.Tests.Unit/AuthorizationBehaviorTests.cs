@@ -46,7 +46,7 @@ public class AuthorizationBehaviorTests
         var next = Substitute.For<RequestHandlerDelegate<ErrorOr<string>>>();
         next().Returns("Success");
 
-        var authenticatedUser = new AuthenticationUser("1", "user@example.com", "John", "Doe", new List<string>());
+        var authenticatedUser = new AuthenticatedUser("1", "user@example.com", "John", "Doe", new List<string>());
         _authenticatedUserProvider.GetCurrentUser().Returns(authenticatedUser);
 
         // Act
@@ -65,7 +65,7 @@ public class AuthorizationBehaviorTests
         var request = new AuthorizedTestRequest();
         var next = Substitute.For<RequestHandlerDelegate<ErrorOr<string>>>();
 
-        _authenticatedUserProvider.GetCurrentUser().Returns(AuthenticationUser.GuestUser);
+        _authenticatedUserProvider.GetCurrentUser().Returns(AuthenticatedUser.GuestUser);
 
         // Act
         var result = await _behavior.Handle(request, next, CancellationToken.None);

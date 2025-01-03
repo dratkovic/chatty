@@ -23,7 +23,7 @@ public class JwtTokenManipulator : IJwtTokenManipulator
         RefreshTokenExpirationInHours = _jwtSettings.RefreshTokenExpirationInHours;
     }
 
-    public string GenerateToken(IAuthenticationUser user)
+    public string GenerateToken(IAuthenticatedUser user)
     {
         var tokenHandler = new JsonWebTokenHandler();
         

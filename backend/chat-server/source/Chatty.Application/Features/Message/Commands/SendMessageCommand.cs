@@ -4,7 +4,7 @@ using Chatty.Core.Application.Common.Authorization;
 using ErrorOr;
 using MediatR;
 
-namespace Chatty.Application.Message.Commands;
+namespace Chatty.Application.Features.Message.Commands;
 
 [DAuthorize]
 public sealed record SendMessageCommand(SendMessageRequest Request) 

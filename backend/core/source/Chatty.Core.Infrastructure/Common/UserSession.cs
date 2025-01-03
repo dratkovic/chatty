@@ -8,13 +8,13 @@ namespace Chatty.Core.Infrastructure.Common;
 
 public class AuthenticatedUserProvider(IHttpContextAccessor? _httpContextAccessor) : IAuthenticatedUserProvider
 {
-    public virtual IAuthenticationUser GetCurrentUser()
+    public virtual IAuthenticatedUser GetCurrentUser()
     {
         if (_httpContextAccessor?.HttpContext is null)
-            return AuthenticationUser.GuestUser;
+            return AuthenticatedUser.GuestUser;
 
         if (!_httpContextAccessor.HttpContext!.User.Claims.Any())
-            return AuthenticationUser.GuestUser;
+            return AuthenticatedUser.GuestUser;
 
         var id = GetClaimValues(ClaimTypes.NameIdentifier)
             .First();
@@ -24,7 +24,7 @@ public class AuthenticatedUserProvider(IHttpContextAccessor? _httpContextAccesso
         var lastName = GetClaimValues(ClaimTypes.Surname).First();
         var roles = GetClaimValues(ClaimTypes.Role).ToList();
 
-        return new AuthenticationUser(id, email, firstName, lastName, roles);
+        return new AuthenticatedUser(id, email, firstName, lastName, roles);
     }
 
     protected IReadOnlyList<string> GetClaimValues(string claimType)

@@ -13,6 +13,7 @@ var postgresDbServer = builder.AddPostgres("chatty-postgres-server", admin, pass
     .WithDataVolume(isReadOnly: false);
 
 var authDb = postgresDbServer.AddDatabase("chatty-auth-db");
+var appDb = postgresDbServer.AddDatabase("chatty-app-db");
 
 // * PgAdmin in development *
 if (builder.Environment.IsDevelopment())
@@ -24,5 +25,12 @@ if (builder.Environment.IsDevelopment())
 builder.AddProject<Projects.Chatty_Authentication_Api>("chatty-auth-server")
     .WithReference(authDb)
     .WaitFor(authDb);
+
+// * App Server *
+builder.AddProject<Projects.Chatty_WebApi>("chatty-app-server")
+    .WithReference(appDb)
+    .WithReference(redis)
+    .WaitFor(appDb)
+    .WaitFor(redis);
 
 builder.Build().Run();

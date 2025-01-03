@@ -1,11 +1,11 @@
 ﻿using Chatty.Application.Common.Helpers;
 using Chatty.Contracts.Responses;
 using Chatty.Core.Application.Common.Persistance;
-using MediatR;
 using ErrorOr;
+using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Chatty.Application.Message.Commands;
+namespace Chatty.Application.Features.Message.Commands;
 
 internal class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, ErrorOr<MessageStatusResponse>>
 {

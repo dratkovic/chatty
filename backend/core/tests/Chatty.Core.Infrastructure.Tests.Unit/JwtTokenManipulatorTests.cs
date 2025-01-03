@@ -32,7 +32,7 @@ public class JwtTokenManipulatorTests
     [Fact]
     public void GenerateToken_ShouldReturnValidJwtToken()
     {
-        var user = new AuthenticationUser("1", "test@example.com", "John", "Doe", new List<string> { "User" });
+        var user = new AuthenticatedUser("1", "test@example.com", "John", "Doe", new List<string> { "User" });
 
         var token = _jwtTokenManipulator.GenerateToken(user);
 
@@ -59,7 +59,7 @@ public class JwtTokenManipulatorTests
     [Fact]
     public async Task GetPrincipalFromExpiredToken_ShouldReturnValidClaimsIdentity()
     {
-        var user = new AuthenticationUser("1", "test@example.com", "John", "Doe", new List<string> { "User" });
+        var user = new AuthenticatedUser("1", "test@example.com", "John", "Doe", new List<string> { "User" });
         var token = _jwtTokenManipulator.GenerateToken(user);
 
         var result = await _jwtTokenManipulator.GetPrincipalFromExpiredToken(token);
