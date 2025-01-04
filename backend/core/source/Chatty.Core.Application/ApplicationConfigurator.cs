@@ -2,6 +2,7 @@
 using Chatty.Core.Application.Behaviors;
 using Chatty.Core.Application.Mapping;
 using FluentValidation;
+using MediatR.NotificationPublishers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Chatty.Core.Application;
@@ -21,6 +22,8 @@ public static class ApplicationConfigurator
                 cfg.RegisterServicesFromAssembly(assembly);
                 cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
                 cfg.AddOpenBehavior(typeof(AuthorizationBehavior<,>));
+
+                cfg.NotificationPublisher = new TaskWhenAllPublisher();
             })
             .AddAutoMapperProfile(assembly);
     }

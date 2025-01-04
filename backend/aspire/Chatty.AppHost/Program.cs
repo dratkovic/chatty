@@ -5,6 +5,12 @@ var builder = DistributedApplication.CreateBuilder(args);
 // * Redis *
 var redis = builder.AddRedis("chatty-redis");
 
+// * RabbitMQ *
+var rbAdmin = builder.AddParameter("rabbit-admin", secret: true);
+var rbPassword = builder.AddParameter("rabbit-password", secret: true);
+var rabbitMq = builder.AddRabbitMQ("chatty-rabbitmq", rbAdmin, rbPassword)
+    .WithManagementPlugin();;
+
 // * Postgres *
 var admin = builder.AddParameter("postgres-admin", secret: true);
 var password = builder.AddParameter("postgres-password", secret: true);
@@ -30,7 +36,9 @@ builder.AddProject<Projects.Chatty_Authentication_Api>("chatty-auth-server")
 builder.AddProject<Projects.Chatty_WebApi>("chatty-app-server")
     .WithReference(appDb)
     .WithReference(redis)
+    .WithReference(rabbitMq)
     .WaitFor(appDb)
+    .WaitFor(rabbitMq)
     .WaitFor(redis);
 
 builder.Build().Run();
