@@ -6,4 +6,9 @@ internal static  class CacheKeys
     {
         return $"GroupUsers:{groupId}";
     }
+    
+    internal static string UserIsInDb(string userId)
+    {
+        return $"UserSession:{userId}";
+    }
 }

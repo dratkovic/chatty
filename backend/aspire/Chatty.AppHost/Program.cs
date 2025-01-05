@@ -6,13 +6,13 @@ var builder = DistributedApplication.CreateBuilder(args);
 var redis = builder.AddRedis("chatty-redis");
 
 // * RabbitMQ *
-var rbAdmin = builder.AddParameter("rabbit-admin", secret: true);
+var rbAdmin = builder.AddParameter("rabbit-admin");
 var rbPassword = builder.AddParameter("rabbit-password", secret: true);
-var rabbitMq = builder.AddRabbitMQ("chatty-rabbitmq", rbAdmin, rbPassword)
-    .WithManagementPlugin();;
+var rabbitMq = builder.AddRabbitMQ("chatty-rabbitmq")//, rbAdmin, rbPassword)
+    .WithManagementPlugin();
 
 // * Postgres *
-var admin = builder.AddParameter("postgres-admin", secret: true);
+var admin = builder.AddParameter("postgres-admin");
 var password = builder.AddParameter("postgres-password", secret: true);
 
 var postgresDbServer = builder.AddPostgres("chatty-postgres-server", admin, password)

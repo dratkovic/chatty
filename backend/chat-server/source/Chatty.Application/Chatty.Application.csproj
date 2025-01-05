@@ -21,8 +21,4 @@
     <ProjectReference Include="..\Chatty.Domain\Chatty.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Integration\Contracts\" />
-  </ItemGroup>
-
 </Project>

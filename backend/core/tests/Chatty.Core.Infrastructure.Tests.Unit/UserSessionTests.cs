@@ -19,11 +19,11 @@ public class AuthenticatedUserProviderTests
     }
 
     [Fact]
-    public void GetCurrentUser_ShouldReturnGuestUser_WhenHttpContextIsNull()
+    public async Task GetCurrentUser_ShouldReturnGuestUser_WhenHttpContextIsNull()
     {
         _httpContextAccessor.HttpContext.Returns((HttpContext)null!);
 
-        var result = _authenticatedUserProvider.GetCurrentUser();
+        var result = await _authenticatedUserProvider.GetCurrentUser();
 
         result.IsGuest.Should().BeTrue();
         result.Id.Should().BeEmpty();
@@ -31,12 +31,12 @@ public class AuthenticatedUserProviderTests
     }
 
     [Fact]
-    public void GetCurrentUser_ShouldReturnGuestUser_WhenNoClaims()
+    public async Task GetCurrentUser_ShouldReturnGuestUser_WhenNoClaims()
     {
         var httpContext = new DefaultHttpContext();
         _httpContextAccessor.HttpContext.Returns(httpContext);
 
-        var result = _authenticatedUserProvider.GetCurrentUser();
+        var result = await _authenticatedUserProvider.GetCurrentUser();
 
         result.IsGuest.Should().BeTrue();
         result.Id.Should().BeEmpty();
@@ -44,7 +44,7 @@ public class AuthenticatedUserProviderTests
     }
 
     [Fact]
-    public void GetCurrentUser_ShouldReturnAuthenticatedUser_WhenClaimsArePresent()
+    public async Task GetCurrentUser_ShouldReturnAuthenticatedUser_WhenClaimsArePresent()
     {
         var claims = new List<Claim>
         {
@@ -64,7 +64,7 @@ public class AuthenticatedUserProviderTests
         };
         _httpContextAccessor.HttpContext.Returns(httpContext);
 
-        var result = _authenticatedUserProvider.GetCurrentUser();
+        var result = await _authenticatedUserProvider.GetCurrentUser();
 
         result.IsGuest.Should().BeFalse();
         result.Id.Should().Be("123");

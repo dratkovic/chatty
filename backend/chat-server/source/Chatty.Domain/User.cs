@@ -16,13 +16,13 @@ public class User: AggregateRoot
         DisplayName = displayName;
     }
 
-    public static ErrorOr<User> Create(string email, string displayName)
+    public static ErrorOr<User> Create(string email, string displayName, Guid? id = null)
     {
         if (!IsEmailValid(email))
         {
             return  Error.Validation("Invalid email address");
         }
-        var user = new User(email, displayName);
+        var user = new User(email, displayName, id);
         user.AddDomainEvent(new UserCreatedEvent(user));
         return user;
     }
