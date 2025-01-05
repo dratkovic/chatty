@@ -23,7 +23,7 @@ public class AuthenticatedUserProviderTests
     {
         _httpContextAccessor.HttpContext.Returns((HttpContext)null!);
 
-        var result = await _authenticatedUserProvider.GetCurrentUser();
+        var result = _authenticatedUserProvider.GetCurrentUser();
 
         result.IsGuest.Should().BeTrue();
         result.Id.Should().BeEmpty();
@@ -36,7 +36,7 @@ public class AuthenticatedUserProviderTests
         var httpContext = new DefaultHttpContext();
         _httpContextAccessor.HttpContext.Returns(httpContext);
 
-        var result = await _authenticatedUserProvider.GetCurrentUser();
+        var result = _authenticatedUserProvider.GetCurrentUser();
 
         result.IsGuest.Should().BeTrue();
         result.Id.Should().BeEmpty();
@@ -64,7 +64,7 @@ public class AuthenticatedUserProviderTests
         };
         _httpContextAccessor.HttpContext.Returns(httpContext);
 
-        var result = await _authenticatedUserProvider.GetCurrentUser();
+        var result = _authenticatedUserProvider.GetCurrentUser();
 
         result.IsGuest.Should().BeFalse();
         result.Id.Should().Be("123");

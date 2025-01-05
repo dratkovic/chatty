@@ -9,6 +9,8 @@ public sealed class Group: AuditEntityBase
     public List<User> Admins { get;} = [];
     public List<User> Participants { get; } = [];
     
+    private Group() { }
+    
     internal Group(User creator, string name, bool isPulbic, Guid? id = null) : base(id)
     {
         Name = name;

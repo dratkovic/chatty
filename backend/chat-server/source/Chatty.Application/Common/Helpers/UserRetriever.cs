@@ -1,4 +1,5 @@
-﻿using Chatty.Core.Application.Common.Interfaces;
+﻿using System.Collections.Concurrent;
+using Chatty.Core.Application.Common.Interfaces;
 using Chatty.Core.Application.Common.Persistance;
 using Chatty.Core.Domain.Models;
 using Chatty.Domain;
@@ -11,13 +12,12 @@ public class UserRetriever : IUserRetriever
 {
     private readonly IAppDbContext _dbContext;
     private readonly IAuthenticatedUserProvider _userProvider;
-    private HybridCache _cache;
+    private readonly ConcurrentDictionary<Guid,User> _users = new();
     
-    public UserRetriever(IAppDbContext dbContext, IAuthenticatedUserProvider userProvider, HybridCache cache)
+    public UserRetriever(IAppDbContext dbContext, IAuthenticatedUserProvider userProvider)
     {
         _dbContext = dbContext;
         _userProvider = userProvider;
-        _cache = cache;
     }
     
     // We are getting JWT from auth service. As that is in separate db we need to check if we have
@@ -30,11 +30,15 @@ public class UserRetriever : IUserRetriever
             return null;
         }
         
-        var user = await _cache.GetOrCreateAsync(CacheKeys.UserIsInDb(currentUser.Id),
-            async cancel => await CreateUserInDbIfNotExist(currentUser, cancel),
-            cancellationToken: ct);
+        if (_users.TryGetValue(userId, out var user))
+        {
+            return user;
+        }
+
+        var persistedUser = await CreateUserInDbIfNotExist(currentUser, ct);
+        _users.TryAdd(userId, persistedUser);
         
-        return user;
+        return persistedUser;
     }
     
     private async Task<User> CreateUserInDbIfNotExist(IAuthenticatedUser user, CancellationToken ct)

@@ -32,7 +32,7 @@ internal class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, E
         }
 
         var message = user.SendMessage(request.Request.Content,
-            request.Request.ReceiverId, request.Request.GroupId);
+             request.Request.GroupId,request.Request.ReceiverId);
 
         if (message.IsError)
         {

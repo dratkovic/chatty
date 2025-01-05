@@ -22,8 +22,8 @@ public class ChattyDbContext: AppDbContext, IAppDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(IInfrastructureMarker).Assembly);
         base.OnModelCreating(modelBuilder);
-
     }
 
     public new DbSet<T> Set<T>() where T : EntityBase

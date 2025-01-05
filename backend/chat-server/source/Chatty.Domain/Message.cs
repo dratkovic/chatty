@@ -17,6 +17,9 @@ public class Message : EntityBase
     
     public MessageStatus Status { get; private set; } = MessageStatus.Sent;
     
+    private Message() : base(null)
+    {
+    }
     private Message(Guid senderId, string content, Guid? groupId, Guid? recipientId) : base(null)
     {
         SenderId = senderId;

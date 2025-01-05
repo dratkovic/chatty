@@ -10,6 +10,8 @@ public class User: AggregateRoot
     public string Email { get; private set; }
     public string DisplayName { get; private set; }
     public List<Group> Groups { get; } = [];
+    
+    private User() { }
     private User(string email, string displayName, Guid? id = null) : base(id)
     {
         Email = email;
