@@ -54,9 +54,6 @@ if (app.Environment.IsDevelopment())
         await dbContext.Database.EnsureCreatedAsync();
     }
 }
-
-app.AddInfrastructureMiddleware();
-
 app.UseIEndpoints<IChattyApiMarker>();
 app.MapHub<LiveChatHub>("hubs/livechat");
 

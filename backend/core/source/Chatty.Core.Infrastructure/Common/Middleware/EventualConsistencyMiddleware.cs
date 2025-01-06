@@ -3,12 +3,17 @@ using Chatty.Core.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Chatty.Core.Infrastructure.Common.Middleware;
 
-public class EventualConsistencyMiddleware(RequestDelegate next)
+public class EventualConsistencyMiddleware(
+    RequestDelegate next)
 {
-    public async Task InvokeAsync(HttpContext context, IPublisher publisher, IAppDbContext dbContext)
+    public async Task InvokeAsync(HttpContext context,
+        IPublisher publisher,
+        IAppDbContext dbContext,
+        ILogger<EventualConsistencyMiddleware> _logger)
     {
         var strategy = dbContext.Database.CreateExecutionStrategy();
 
@@ -21,25 +26,26 @@ public class EventualConsistencyMiddleware(RequestDelegate next)
             // block the user from getting the response. Consequence if failure occur is that user will not get
             // that error response immediately but it will be handled in the background.
             context.Response.OnCompleted(async () =>
-        {
-            try
             {
-                if (context.Items.TryGetValue("DomainEventsQueue", out var value) &&
-                    value is Queue<IDomainEvent> domainEventsQueue)
+                try
                 {
-                    while (domainEventsQueue!.TryDequeue(out var domainEvent))
+                    if (context.Items.TryGetValue("DomainEventsQueue", out var value) &&
+                        value is Queue<IDomainEvent> domainEventsQueue)
                     {
-                        await publisher.Publish(domainEvent);
+                        while (domainEventsQueue!.TryDequeue(out var domainEvent))
+                        {
+                            await publisher.Publish(domainEvent);
+                        }
                     }
-                }
 
-                await transaction.CommitAsync();
-            }
-            catch (Exception)
-            {
-                // TODO Implement resiliency.. Send an email / Add to some queue for reprocessing...
-            }
-        });
+                    await transaction.CommitAsync();
+                }
+                catch (Exception e)
+                {
+                    _logger.LogCritical(e, "Error occurred while publishing domain events");
+                    // TODO Implement resiliency.. Send an email / Add to some queue for reprocessing...
+                }
+            });
         });
 
         await next(context);

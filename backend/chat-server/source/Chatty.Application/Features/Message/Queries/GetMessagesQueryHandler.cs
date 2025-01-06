@@ -56,7 +56,7 @@ public class GetMessagesQueryHandler : IRequestHandler<GetMessagesQuery, ErrorOr
         {
             messages = await messagesQuery
                 .OrderByDescending(x => x.TimeStampUtc)
-                .Take(request.Query.Count)
+                .Take(request.Query.Count ?? 20)
                 .Select(x => new MessageResponse(x.Id,
                     x.SenderId,
                     x.Sender.DisplayName,
