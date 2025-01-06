@@ -46,7 +46,7 @@ public class AuthorizationBehaviorTests
         var next = Substitute.For<RequestHandlerDelegate<ErrorOr<string>>>();
         next().Returns("Success");
 
-        var authenticatedUser = new AuthenticatedUser("1", "user@example.com", "John", "Doe", new List<string>());
+        var authenticatedUser = new AuthenticatedUser(Guid.NewGuid(), "user@example.com", "John", "Doe", new List<string>());
         _authenticatedUserProvider.GetCurrentUser().Returns(authenticatedUser);
 
         // Act

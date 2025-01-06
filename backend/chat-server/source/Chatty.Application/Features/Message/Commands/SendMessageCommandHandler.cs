@@ -23,7 +23,7 @@ internal class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, E
     public async Task<ErrorOr<MessageStatusResponse>> Handle(SendMessageCommand request,
         CancellationToken cancellationToken)
     {
-        var user = await _userSession.GetCurrentUser();
+        var user = await _userSession.GetCurrentUser(cancellationToken);
 
         if (user == null)
         {
@@ -39,8 +39,9 @@ internal class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, E
             _logger.LogInformation("Message failed to send to chatty: {0}", message.FirstError.Description);
             return Error.Validation(description: message.FirstError.Description);
         }
-
-        await _dbContext.SaveChangesAsync(cancellationToken);
+        
+        _dbContext.Set<Domain.Message>().Add(message.Value);
+        await _dbContext.CommitChangesAsync(cancellationToken);
 
         return new MessageStatusResponse(message.Value.Id, message.Value.RecipientId, message.Value.GroupId,
             message.Value.TimeStampUtc, "Sent");

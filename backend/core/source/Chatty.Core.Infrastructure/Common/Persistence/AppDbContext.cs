@@ -65,13 +65,13 @@ public class AppDbContext : DbContext
             {
                 case EntityState.Added:
                     entry.Entity.CreatedAt = DateTime.UtcNow;
-                    entry.Entity.CreatedBy = _authenticatedUserProvider.GetCurrentUser().Id;
+                    entry.Entity.CreatedBy = _authenticatedUserProvider.GetCurrentUser().Id.ToString();
                     entry.Entity.ModifiedAt = DateTime.UtcNow;
-                    entry.Entity.ModifiedBy = _authenticatedUserProvider.GetCurrentUser().Id;
+                    entry.Entity.ModifiedBy = _authenticatedUserProvider.GetCurrentUser().Id.ToString();
                     break;
                 case EntityState.Modified:
                     entry.Entity.ModifiedAt = DateTime.UtcNow;
-                    entry.Entity.ModifiedBy = _authenticatedUserProvider.GetCurrentUser().Id;
+                    entry.Entity.ModifiedBy = _authenticatedUserProvider.GetCurrentUser().Id.ToString();
                     break;
             }
         }

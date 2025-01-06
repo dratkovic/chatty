@@ -2,10 +2,19 @@
 
 public static class ApiConstants
 {
-    public static string DbConnectionStringConfigName = "chatty-app-db";
+    private const string BaseRoute = "api";
+    public const string JsonContentType = "application/json";
    
     public static class EndpointTags
     {
-        public static string Messages = "Messages";
+        public const string Messages = "Messages";
+    }
+
+    public static class Routes
+    {
+        public static class Messages
+        {
+            public const string MessagesBase = $"{BaseRoute}/messages";
+        }
     }
 }

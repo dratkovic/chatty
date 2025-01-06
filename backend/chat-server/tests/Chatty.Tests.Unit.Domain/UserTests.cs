@@ -36,7 +36,7 @@ public class UserTests
 
         // Assert
         Assert.True(result.IsError);
-        Assert.Equal("Invalid email address", result.FirstError.Code);
+        Assert.Equal("Invalid email address", result.FirstError.Description);
     }
 
     [Fact]
@@ -98,7 +98,7 @@ public class UserTests
 
         // Assert
         Assert.True(result.IsError);
-        Assert.Equal("User is not a member of the group", result.FirstError.Code);
+        Assert.Equal("User is not a member of the group", result.FirstError.Description);
     }
 
     [Fact]
@@ -146,7 +146,7 @@ public class UserTests
 
         // Assert
         Assert.True(result.IsError);
-        Assert.Equal("Group is private", result.FirstError.Code);
+        Assert.Equal("Group is private", result.FirstError.Description);
     }
 
     [Fact]
@@ -216,7 +216,7 @@ public class UserTests
 
         // Assert
         Assert.True(result.IsError);
-        Assert.Equal("User is not an admin of the group", result.FirstError.Code);
+        Assert.Equal("User is not an admin of the group", result.FirstError.Description);
     }
 
     [Fact]
@@ -234,7 +234,7 @@ public class UserTests
 
         // Assert
         Assert.True(result.IsError);
-        Assert.Equal("User is not an admin of the group", result.FirstError.Code);
+        Assert.Equal("User is not an admin of the group", result.FirstError.Description);
     }
 
     [Fact]
@@ -250,7 +250,7 @@ public class UserTests
 
         // Assert
         Assert.True(result.IsError);
-        Assert.Equal("User is not a member of the group", result.FirstError.Code);
+        Assert.Equal("User is not a member of the group", result.FirstError.Description);
     }
 
     [Fact]
@@ -265,6 +265,6 @@ public class UserTests
 
         // Assert
         Assert.True(result.IsError);
-        Assert.Equal("Cannot leave group as the only admin", result.FirstError.Code);
+        Assert.Equal("Cannot leave group as the only admin", result.FirstError.Description);
     }
 }

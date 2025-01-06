@@ -32,7 +32,7 @@ public class JwtTokenManipulatorTests
     [Fact]
     public void GenerateToken_ShouldReturnValidJwtToken()
     {
-        var user = new AuthenticatedUser("1", "test@example.com", "John", "Doe", new List<string> { "User" });
+        var user = new AuthenticatedUser(Guid.NewGuid(), "test@example.com", "John", "Doe", new List<string> { "User" });
 
         var token = _jwtTokenManipulator.GenerateToken(user);
 
@@ -40,7 +40,7 @@ public class JwtTokenManipulatorTests
         var jwtToken = new JsonWebTokenHandler().ReadToken(token) as JsonWebToken;
         jwtToken.Should().NotBeNull();
         jwtToken!.Issuer.Should().Be(_jwtSettings.Issuer);
-        jwtToken.Claims.Should().Contain(c => c.Type == ClaimTypes.NameIdentifier && c.Value == user.Id);
+        jwtToken.Claims.Should().Contain(c => c.Type == ClaimTypes.NameIdentifier && c.Value == user.Id.ToString());
         jwtToken.Claims.Should().Contain(c => c.Type == ClaimTypes.Email && c.Value == user.Email);
         jwtToken.Claims.Should().Contain(c => c.Type == ClaimTypes.Name && c.Value == user.FirstName);
         jwtToken.Claims.Should().Contain(c => c.Type == ClaimTypes.Surname && c.Value == user.LastName);
@@ -59,7 +59,7 @@ public class JwtTokenManipulatorTests
     [Fact]
     public async Task GetPrincipalFromExpiredToken_ShouldReturnValidClaimsIdentity()
     {
-        var user = new AuthenticatedUser("1", "test@example.com", "John", "Doe", new List<string> { "User" });
+        var user = new AuthenticatedUser(Guid.NewGuid(), "test@example.com", "John", "Doe", new List<string> { "User" });
         var token = _jwtTokenManipulator.GenerateToken(user);
 
         var result = await _jwtTokenManipulator.GetPrincipalFromExpiredToken(token);
@@ -67,7 +67,7 @@ public class JwtTokenManipulatorTests
         result.IsError.Should().BeFalse();
         var claimsIdentity = result.Value;
         claimsIdentity.Should().NotBeNull();
-        claimsIdentity.Claims.Should().Contain(c => c.Type == ClaimTypes.NameIdentifier && c.Value == user.Id);
+        claimsIdentity.Claims.Should().Contain(c => c.Type == ClaimTypes.NameIdentifier && c.Value == user.Id.ToString());
         claimsIdentity.Claims.Should().Contain(c => c.Type == ClaimTypes.Email && c.Value == user.Email);
         claimsIdentity.Claims.Should().Contain(c => c.Type == ClaimTypes.Name && c.Value == user.FirstName);
         claimsIdentity.Claims.Should().Contain(c => c.Type == ClaimTypes.Surname && c.Value == user.LastName);

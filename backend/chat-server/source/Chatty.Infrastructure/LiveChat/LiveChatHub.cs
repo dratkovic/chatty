@@ -17,25 +17,15 @@ public class LiveChatHub : Hub<ILiveChatClient>, ILiveChatServer
     {
         _mediator = mediator;
     }
-
-    public override Task OnConnectedAsync()
-    {
-        Clients.All.ReceiveMessage(new MessageResponse(Guid.NewGuid(),
-            Guid.NewGuid(),
-            "Damir the Tester",
-            "Hello World",
-            Guid.NewGuid(),
-            null,
-            DateTime.Now,
-            "sent"));
-        return base.OnConnectedAsync();
-    }
-
     public async Task<MessageStatusResponse> SendMessage(SendMessageRequest message)
     {
         var result = await _mediator.Send(new SendMessageCommand(message));
-
-        // TODO handle failure
+        
+        if(!result.IsError)
+        {
+            throw new HubException(result.FirstError.Description);
+        }
+        
         return result.Value;
     }
 }

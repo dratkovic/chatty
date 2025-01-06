@@ -7,8 +7,8 @@ namespace Chatty.Domain;
 
 public class User: AggregateRoot
 {
-    public string Email { get; private set; }
-    public string DisplayName { get; private set; }
+    public string Email { get; private set; } = null!;
+    public string DisplayName { get; private set; } = null!;
     public List<Group> Groups { get; } = [];
     
     private User() { }
@@ -22,7 +22,7 @@ public class User: AggregateRoot
     {
         if (!IsEmailValid(email))
         {
-            return  Error.Validation("Invalid email address");
+            return  Error.Validation(description:"Invalid email address");
         }
         var user = new User(email, displayName, id);
         user.AddDomainEvent(new UserCreatedEvent(user));
@@ -46,17 +46,17 @@ public class User: AggregateRoot
             AddDomainEvent(new UserJoinedGroupEvent(this, group));
             return new Success();
         }
-        return Error.Validation("Group is private");
+        return Error.Validation(description:"Group is private");
     }
     
     public ErrorOr<Success> LeaveGroup(Group group)
     {
         if (!group.Participants.Contains(this)) 
-            return Error.Validation("User is not a member of the group");
+            return Error.Validation(description:"User is not a member of the group");
         
         if(group.Admins.Contains(this) && group.Admins.Count == 1)
         {
-            return Error.Validation("Cannot leave group as the only admin");
+            return Error.Validation(description:"Cannot leave group as the only admin");
         }
        
         group.Participants.Remove(this);
@@ -69,9 +69,9 @@ public class User: AggregateRoot
     {
         if(groupId != null && Groups.All(g => g.Id != groupId))
         {
-            return Error.Validation("User is not a member of the group");
+            return Error.Validation(description: "User is not a member of the group");
         }
-        var message = Message.Create(Id, content, groupId, recipientId);
+        var message = Message.Create(this, content, groupId, recipientId);
         if(message.IsError)
         {
             return message;
@@ -84,7 +84,7 @@ public class User: AggregateRoot
     {
         if (!group.Admins.Contains(this))
         {
-            return Error.Validation("User is not an admin of the group");
+            return Error.Validation(description:"User is not an admin of the group");
         }
         foreach (var user in users.Where(user => !group.Participants.Contains(user)))
         {
@@ -98,7 +98,7 @@ public class User: AggregateRoot
     {
         if (!group.Admins.Contains(this))
         {
-            return Error.Validation("User is not an admin of the group");
+            return Error.Validation(description:"User is not an admin of the group");
         }
         foreach (var user in users.Where(user => group.Participants.Contains(user)))
         {

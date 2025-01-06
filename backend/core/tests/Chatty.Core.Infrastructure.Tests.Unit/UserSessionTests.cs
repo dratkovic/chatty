@@ -19,7 +19,7 @@ public class AuthenticatedUserProviderTests
     }
 
     [Fact]
-    public async Task GetCurrentUser_ShouldReturnGuestUser_WhenHttpContextIsNull()
+    public void GetCurrentUser_ShouldReturnGuestUser_WhenHttpContextIsNull()
     {
         _httpContextAccessor.HttpContext.Returns((HttpContext)null!);
 
@@ -31,7 +31,7 @@ public class AuthenticatedUserProviderTests
     }
 
     [Fact]
-    public async Task GetCurrentUser_ShouldReturnGuestUser_WhenNoClaims()
+    public void GetCurrentUser_ShouldReturnGuestUser_WhenNoClaims()
     {
         var httpContext = new DefaultHttpContext();
         _httpContextAccessor.HttpContext.Returns(httpContext);
@@ -44,11 +44,12 @@ public class AuthenticatedUserProviderTests
     }
 
     [Fact]
-    public async Task GetCurrentUser_ShouldReturnAuthenticatedUser_WhenClaimsArePresent()
+    public void GetCurrentUser_ShouldReturnAuthenticatedUser_WhenClaimsArePresent()
     {
+        var id = Guid.NewGuid();
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.NameIdentifier, "123"),
+            new Claim(ClaimTypes.NameIdentifier, id.ToString()),
             new Claim(ClaimTypes.Email, "john@example.com"),
             new Claim(ClaimTypes.Name, "John"),
             new Claim(ClaimTypes.Surname, "Doe"),
@@ -67,7 +68,7 @@ public class AuthenticatedUserProviderTests
         var result = _authenticatedUserProvider.GetCurrentUser();
 
         result.IsGuest.Should().BeFalse();
-        result.Id.Should().Be("123");
+        result.Id.Should().Be(id);
         result.Email.Should().Be("john@example.com");
         result.FirstName.Should().Be("John");
         result.LastName.Should().Be("Doe");

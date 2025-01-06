@@ -5,7 +5,7 @@ namespace Chatty.Domain;
 public sealed class Group: AuditEntityBase
 {
     public bool IsPublic { get; set; }
-    public string Name { get; private set; }
+    public string Name { get; private set; } = null!;
     public List<User> Admins { get;} = [];
     public List<User> Participants { get; } = [];
     

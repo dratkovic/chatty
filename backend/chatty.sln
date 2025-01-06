@@ -56,6 +56,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{B89658B7-3406-492C-9ABA-E6C783A4D5FB}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Packages.props = Directory.Packages.props
+		Readme.md = Readme.md
 	EndProjectSection
 EndProject
 Global

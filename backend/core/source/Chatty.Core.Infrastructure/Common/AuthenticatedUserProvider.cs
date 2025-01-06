@@ -24,7 +24,7 @@ public class AuthenticatedUserProvider(IHttpContextAccessor? _httpContextAccesso
         var lastName = GetClaimValues(ClaimTypes.Surname).First();
         var roles = GetClaimValues(ClaimTypes.Role).ToList();
 
-        return new AuthenticatedUser(id, email, firstName, lastName, roles);
+        return new AuthenticatedUser(new Guid(id), email, firstName, lastName, roles);
     }
 
     protected IReadOnlyList<string> GetClaimValues(string claimType)
