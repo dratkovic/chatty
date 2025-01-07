@@ -55,6 +55,8 @@ if (app.Environment.IsDevelopment())
     }
 }
 app.UseIEndpoints<IChattyApiMarker>();
+app.AddInfrastructureMiddleware();
+
 app.MapHub<LiveChatHub>("hubs/livechat");
 
 app.Run();

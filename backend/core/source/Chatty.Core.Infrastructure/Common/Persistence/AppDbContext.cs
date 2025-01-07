@@ -34,7 +34,14 @@ public class AppDbContext : DbContext
             .ToList();
 
         // store them in the http context for later if user is waiting online
-        await PublishDomainEvents(_publisher, domainEvents);
+        if (IsUserWaitingOnline())
+        {
+            AddDomainEventsToOfflineProcessingQueue(domainEvents);
+        }
+        else
+        {
+            await PublishDomainEvents(_publisher, domainEvents);
+        }
 
         await SaveChangesAsync(token);
     }
@@ -70,7 +77,23 @@ public class AppDbContext : DbContext
             }
         }
     }
+    private bool IsUserWaitingOnline() => 
+        _httpContextAccessor.HttpContext is not null && _httpContextAccessor.HttpContext.Request.Protocol != "HTTP/1.1";
 
+    private void AddDomainEventsToOfflineProcessingQueue(List<IDomainEvent> domainEvents)
+    {
+        // fetch queue from http context or create a new queue if it doesn't exist
+        var domainEventsQueue = _httpContextAccessor.HttpContext!.Items
+            .TryGetValue("DomainEventsQueue", out var value) && value is Queue<IDomainEvent> existingDomainEvents
+            ? existingDomainEvents
+            : new Queue<IDomainEvent>();
+
+        // add the domain events to the end of the queue
+        domainEvents.ForEach(domainEventsQueue.Enqueue);
+
+        // store the queue in the http context
+        _httpContextAccessor.HttpContext!.Items["DomainEventsQueue"] = domainEventsQueue;
+    }
     private static async Task PublishDomainEvents(IPublisher _publisher, List<IDomainEvent> domainEvents)
     {
         foreach (var domainEvent in domainEvents)
