@@ -2,15 +2,14 @@
 - [x] User registration
 - [x] User login
 - [x] User logout
-- [] User profile
 - [x] Send message
-- [] Receive messages for 1on1 chat/ group chat
+- [x] Receive messages for 1on1 chat/ group chat
 - [x] Receive messages in real time
-- [] Create group chat
-- [] Add user to group chat
-- [] Remove user from group chat
+- [x] Create group chat
+- [x] Add user to group chat
+- [x] Remove user from group chat
 - [] Delete group chat
-- [] Leave group chat
+- [x] Leave group chat
 - [] List of all group chats for user
 - [] List of all users in group chat
 - [] List of all users
