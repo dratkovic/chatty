@@ -10,9 +10,9 @@
 - [x] Remove user from group chat
 - [] Delete group chat
 - [x] Leave group chat
-- [] List of all group chats for user
-- [] List of all users in group chat
-- [] List of all users
+- [x] List of all group chats for user
+- [x] List of all users in group chat
+- [] search for user by email
 
 ## Technologies
 - .Net Core 9
