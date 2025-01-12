@@ -2,7 +2,7 @@
 using ErrorOr;
 using Xunit;
 
-namespace Chatty.Tests.Unit.Domain;
+namespace Chatty.Domain.Tests.Unit;
 
 public class MessageTests
 {

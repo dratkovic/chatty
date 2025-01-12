@@ -1,7 +1,7 @@
 ﻿using Chatty.Domain;
 using Xunit;
 
-namespace Chatty.Tests.Unit.Domain;
+namespace Chatty.Domain.Tests.Unit;
 
 public class GroupTests
 {
